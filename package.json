@@ -1,0 +1,26 @@
+{
+  "name": "hotel-management",
+  "version": "1.0.0",
+  "description": "This is a Hotel Management System. It is a web application that allows a hotel to manage its rooms, guests, reservations, and payments.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Godswillconcept/hotel-management.git"
+  },
+  "keywords": [
+    "hotel",
+    "management",
+    "guest",
+    "nodejs",
+    "express"
+  ],
+  "author": "Mofiyin Ebo , Mujeeb Abdusalam, Isaac Heritage",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Godswillconcept/hotel-management/issues"
+  },
+  "homepage": "https://github.com/Godswillconcept/hotel-management#readme"
+}
