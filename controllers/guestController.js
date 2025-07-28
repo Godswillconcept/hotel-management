@@ -1,7 +1,7 @@
 const Guest = require("../models/Guest");
 const storeGuest = async (req, res) => {
-  let { guest_id, full_name, phone_number, email, address } = req.body;
-  const guest = Guest.fill({ guest_id, full_name, phone_number, email, address });
+  let { full_name, phone_number, email, address } = req.body;
+  const guest = Guest.fill({ full_name, phone_number, email, address });
    if (req.files?.id_document) {
     const { id_document } = req.files;
     const fileName = `${Date.now()}-${id_document.name}`;
@@ -44,7 +44,7 @@ const getGuestById = async (req, res) => {
 
 const updateGuest = async (req, res) => {
   let { id } = req.params;
-  let { guest_id, full_name, phone_number, email, address } = req.body;
+  let { full_name, phone_number, email, address } = req.body;
   const guest = await Guest.find(id);
   if (!guest) {
     return res.status(404).json({
@@ -52,7 +52,7 @@ const updateGuest = async (req, res) => {
       message: "Guest not found",
     });
   }
-  guest.fill({ guest_id, full_name, phone_number, email, address });
+  guest.fill({ full_name, phone_number, email, address });
 
   await guest.update();
 
