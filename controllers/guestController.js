@@ -1,8 +1,16 @@
+require("dotenv").config();
+const { hash, compare } = require("bcrypt");
 const Guest = require("../models/Guest");
+const jwt = require("jsonwebtoken");
+const JWT_SECRET =
+  process.env.JWT_SECRET || "what is your name";
+
+
 const storeGuest = async (req, res) => {
-  let { full_name,password, phone_number, email, address } = req.body;
-  const guest = Guest.fill({ full_name,password,phone_number, email, address });
-   if (req.files?.id_document) {
+  let { full_name, password, phone_number, email, address } = req.body;
+  const guest = Guest.fill({ full_name, password, phone_number, email, address });
+  guest.password = await hash(guest.password, 10);
+  if (req.files?.id_document) {
     const { id_document } = req.files;
     const fileName = `${Date.now()}-${id_document.name}`;
     const filePath = `uploads/guests/${fileName}`;
@@ -99,6 +107,40 @@ const deleteGuest = async (req, res) => {
   });
 };
 
+const guestLogin = async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({
+      status: "error",
+      message: "Email and password are required",
+    });
+  }
+  // Check if the guest exists
+  const guest = await Guest.findByEmail(email);
+  if (!guest) {
+    return res.status(401).json({
+      status: "error",
+      message: "Invalid email or password",
+    });
+  }
+  // Check if the password is correct (support both hashed and plain text for now)
+  let isValidPassword = false;
+  try {
+    isValidPassword = await compare(password, guest.password);
+  } catch (e) { }
+  if (!isValidPassword && password !== guest.password) {
+    return res.status(401).json({
+      status: "error",
+      message: "Invalid email or password",
+    });
+  }
+  // Generate a token if needed
+  res.json({
+    status: "success",
+    message: "Login successful",
+    // data: { token },
+  });
+};
 
 
 module.exports = {
@@ -108,4 +150,5 @@ module.exports = {
   updateGuest,
   partialGuestUpdate,
   deleteGuest,
+  guestLogin
 };

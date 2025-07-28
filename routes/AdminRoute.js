@@ -4,12 +4,12 @@ const router = Router();
 
 
 const { storeBooking, getBookings, getBookingById, updateBooking, partialBookingUpdate, deleteBooking } = require("../controllers/bookingController");
-const { storeGuest, getGuests, getGuestById, updateGuest, partialGuestUpdate, deleteGuest } = require("../controllers/guestController");
+const { storeGuest, getGuests, getGuestById, updateGuest, partialGuestUpdate, deleteGuest} = require("../controllers/guestController");
 const { storeHotel, getHotels, getHotelById, updateHotel, partialHotelUpdate, deleteHotel } = require("../controllers/hotelController");
 const { storePayment, getPayments, getPaymentById, partialPaymentUpdate, deletePayment } = require("../controllers/paymentController");
 const { storeRoom, getRooms, getRoomById, updateRoom, partialRoomUpdate, deleteRoom } = require("../controllers/roomController");
 const { storeRoomservice, getRoomservices, getRoomserviceById, updateRoomservice, partialRoomserviceUpdate, deleteRoomservice } = require("../controllers/roomserviceController");
-const { storeUser, getUsers, getUserById, updateUser, partialUserUpdate, deleteUser } = require("../controllers/userController");
+const { storeUser, getUsers, getUserById, updateUser, partialUserUpdate, deleteUser} = require("../controllers/userController");
 
 
 
