@@ -20,8 +20,8 @@ const getBookings = async (req, res) => {
 };
 
 const getBookingById = async (req, res) => {
-  let { id } = req.params;
-  const booking = await Booking.find(id);
+  let { booking_id } = req.params;
+  const booking = await Booking.find(booking_id);
   if (!booking) {
     return res.status(404).json({
       status: "error",
