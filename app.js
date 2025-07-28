@@ -35,7 +35,7 @@ app.set('views', resolve('views'));
 app.use(express.static(resolve('assets')));
 app.use(express.static(resolve('uploads')));
 // app.use(userRoute);
-app.use(apiAdminRoute);
+app.use('/users',apiAdminRoute);
 // app.use('/admin', checkAuth, adminRoute); // ssr
 
 app.all('/*splat', (req, res) => {
