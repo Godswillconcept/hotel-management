@@ -1,7 +1,7 @@
 const Guest = require("../models/Guest");
 const storeGuest = async (req, res) => {
-  let { full_name, phone_number, email, address } = req.body;
-  const guest = Guest.fill({ full_name, phone_number, email, address });
+  let { full_name,password, phone_number, email, address } = req.body;
+  const guest = Guest.fill({ full_name,password,phone_number, email, address });
    if (req.files?.id_document) {
     const { id_document } = req.files;
     const fileName = `${Date.now()}-${id_document.name}`;

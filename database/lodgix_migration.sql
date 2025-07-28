@@ -27,12 +27,12 @@ CREATE TABLE IF NOT EXISTS rooms (
 
 CREATE TABLE IF NOT EXISTS guests (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    full_name VARCHAR(255),
-    phone_number VARCHAR(30),
-    password VARCHAR(255),
-    email VARCHAR(255),
+    full_name VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(30) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
     address TEXT,
-    id_document TEXT,
+    id_document TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -54,8 +54,8 @@ CREATE TABLE IF NOT EXISTS bookings (
 
 CREATE TABLE IF NOT EXISTS payments (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    booking_id INT UNSIGNED,
-    amount DECIMAL(10,2),
+    booking_id INT UNSIGNED NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
     payment_date DATETIME NOT NULL,
     method VARCHAR(255) DEFAULT 'Card',
     status ENUM('Completed', 'Failed') DEFAULT 'Completed',
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS users (
     full_name VARCHAR(255) NOT NULL,
     role ENUM('Admin', 'Staff') DEFAULT 'Staff',
     email VARCHAR(255) NOT NULL,
-    phone_number VARCHAR(30),
+    phone_number VARCHAR(30) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (hotel_id) REFERENCES hotels(id)
