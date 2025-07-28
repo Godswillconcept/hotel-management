@@ -1,4 +1,4 @@
-const Room = require("../../models/Room");
+const Room = require("../models/Room");
 const storeRoom = async (req, res) => {
     let { room_id, hotel_id, room_number, type, price_per_night, status, floor, description } = req.body;
     const room = Room.fill({ room_id, hotel_id, room_number, type, price_per_night, status, floor, description });

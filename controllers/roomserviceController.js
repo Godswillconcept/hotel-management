@@ -1,4 +1,4 @@
-const Roomservice = require("../../models/Roomservice");
+const Roomservice = require("../models/Roomservice");
 const storeRoomservice = async (req, res) => {
     let { service_id,
         room_id,

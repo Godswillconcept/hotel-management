@@ -1,4 +1,4 @@
-const User = require("../../models/User");
+const User = require("../models/User");
 const storeUser = async (req, res) => {
     let { user_id,
         hotel_id,
