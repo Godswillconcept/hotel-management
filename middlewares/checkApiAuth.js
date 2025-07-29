@@ -2,8 +2,12 @@ const { expressjwt: jwt } = require('express-jwt');
 const JWT_SECRET = process.env?.JWT_SECRET || "what is your name";
 
 const authenticate = (req, res, next) => {
-    if (!req.auth?.guest || !req.auth?.user) {
-        return res.status(401).json({ status: "error", message: 'Unauthorized' });
+    // Check if user exists (only users should access admin routes)
+    if (!req.auth || !req.auth.user) {
+        return res.status(401).json({ 
+            status: "error", 
+            message: 'Unauthorized - Main User access required' 
+        });
     }
     next();
 }
