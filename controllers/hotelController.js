@@ -1,7 +1,7 @@
 const Hotel = require("../models/Hotel");
 const storeHotel = async (req, res) => {
-  let { hotel_id,name,address,city,country,contact_email,phone_number } = req.body;
-  const hotel = Hotel.fill({ hotel_id,name,address,city,country,contact_email,phone_number });
+  let { name, address, city, country, contact_email, phone_number } = req.body;
+  const hotel = Hotel.fill({ name, address, city, country, contact_email, phone_number });
   await hotel.insert();
   res.json({
     status: "success",
@@ -37,7 +37,7 @@ const getHotelById = async (req, res) => {
 
 const updateHotel = async (req, res) => {
   let { id } = req.params;
-  let {hotel_id,name,address,city,country,contact_email,phone_number} = req.body;
+  let { hotel_id, name, address, city, country, contact_email, phone_number } = req.body;
   const hotel = await Hotel.find(id);
   if (!hotel) {
     return res.status(404).json({
@@ -45,7 +45,7 @@ const updateHotel = async (req, res) => {
       message: "Hotel not found",
     });
   }
-  hotel.fill({ hotel_id,name,address,city,country,contact_email,phone_number });
+  hotel.fill({ hotel_id, name, address, city, country, contact_email, phone_number });
 
   await hotel.update();
 

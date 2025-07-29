@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const JWT_SECRET =
   process.env.JWT_SECRET || "what is your name";
 const storeUser = async (req, res) => {
-    let { user_id,
+    let {
         hotel_id,
         username,
         password,
@@ -13,7 +13,7 @@ const storeUser = async (req, res) => {
         role,
         email,
         phone_number } = req.body;
-    const user = User.fill({ user_id,
+    const user = User.fill({    
         hotel_id,
         username,
         password,
@@ -151,7 +151,7 @@ const apiLogin = async (req, res) => {
         });
     }
     // Check if the password is correct
-    const isValidPassword = await compare(password, admin.password);
+    const isValidPassword = await compare(password, user.password);
     if (!isValidPassword) {
         return res.status(401).json({
             status: "error",
