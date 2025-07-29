@@ -1,0 +1,1195 @@
+{
+	"info": {
+		"_postman_id": "69716775-dc6f-49cf-a676-19e571b1b7ea",
+		"name": "lodgix",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43864466",
+		"_collection_link": "https://mujeebgold.postman.co/workspace/MujeebGOld's-Workspace~361894e3-4668-4060-8147-c7fa8910ee8b/collection/43864466-69716775-dc6f-49cf-a676-19e571b1b7ea?action=share&source=collection_link&creator=43864466"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Guests",
+					"item": [
+						{
+							"name": "store a guest",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Fullstack\",\r\n    \"description\": \"Fullstack web development\",\r\n    \"tuition\": 400000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/programs",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"programs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all guests",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/programs",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"programs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get a guests",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/programs/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"programs",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "partially update a guest",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"baba\":\"Abu\",\r\n    \"tuition\": 450000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/programs/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"programs",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete a programs",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/programs/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"programs",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "store a user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Backend\",\r\n    \"description\": \"Backend web development\",\r\n    \"tuition\": 200000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/admins",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"admins"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/admins",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"admins"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get a user",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/admins/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"admins",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update a user",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Fullstack\",\r\n    \"description\": \"Fullstack web development\",\r\n    \"tuition\": 400000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/programs/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"programs",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "partially update a user",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"baba\":\"Abu\",\r\n    \"tuition\": 450000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/programs/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"programs",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete a user",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/programs/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"programs",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Hotels",
+					"item": [
+						{
+							"name": "store an hotel",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Javascript Advanced\",\r\n    \"description\": \"Advanced Javascript\",\r\n    \"duration\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/courses",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"courses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all hotels",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/courses",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"courses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get a hotel",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/courses/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"courses",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update a hotel",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Fullstack\",\r\n    \"description\": \"Fullstack web development\",\r\n    \"tuition\": 400000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/courses/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"courses",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete a hotel",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/courses/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"courses",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Bookings",
+					"item": [
+						{
+							"name": "store a booking",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "last_name",
+											"value": "Olatunji",
+											"type": "text"
+										},
+										{
+											"key": "first_name",
+											"value": "Hameed",
+											"type": "text"
+										},
+										{
+											"key": "other_name",
+											"value": "Tunde",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "2000-10-09",
+											"type": "text"
+										},
+										{
+											"key": "employment",
+											"value": "2020-10-09",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "Male",
+											"type": "text"
+										},
+										{
+											"key": "state_of_origin",
+											"value": "Oyo",
+											"type": "text"
+										},
+										{
+											"key": "lga",
+											"value": "Lagelu",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "08132950004",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/C:/Users/HAMEED/Pictures/myself-blur-bg.jpg"
+										},
+										{
+											"key": "email",
+											"value": "olatunjihammedtunde@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/admin/bookings",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all bookings",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/bookings",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get a booking",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/bookings/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"bookings",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get the hotel being boooked",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/bookings/:id/courses",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"bookings",
+										":id",
+										"courses"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update a booking",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Fullstack\",\r\n    \"description\": \"Fullstack web development\",\r\n    \"tuition\": 400000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/bookings/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"bookings",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "partially update an booking",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"baba\":\"Abu\",\r\n    \"tuition\": 450000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/bookings/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"bookings",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete an booking",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/booking/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"booking",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Rooms",
+					"item": [
+						{
+							"name": "store a room",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "last_name",
+											"value": "Ajibode",
+											"type": "text"
+										},
+										{
+											"key": "first_name",
+											"value": "Emmanuel",
+											"type": "text"
+										},
+										{
+											"key": "other_name",
+											"value": "Mayowa",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "2001-10-09",
+											"type": "text"
+										},
+										{
+											"key": "admission_date",
+											"value": "2020-10-09",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "Male",
+											"type": "text"
+										},
+										{
+											"key": "state_of_origin",
+											"value": "Oyo",
+											"type": "text"
+										},
+										{
+											"key": "lga",
+											"value": "Lagelu",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "08132950004",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/C:/Users/HAMEED/Pictures/THE DEPUPTY (ACAD) Mr. Adewola Victor.F.jpg"
+										},
+										{
+											"key": "email",
+											"value": "ajibodeema386@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "program_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/admin/rooms",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"rooms"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all rooms",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/rooms",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"rooms"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get a room",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/rooms/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"rooms",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get rooms offered by hotels",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/rooms/:id/courses",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"rooms",
+										":id",
+										"courses"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update a room",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Fullstack\",\r\n    \"description\": \"Fullstack web development\",\r\n    \"tuition\": 400000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/rooms/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"rooms",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "partially update a room",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"baba\":\"Abu\",\r\n    \"tuition\": 450000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/rooms/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"rooms",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete an booking",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/admin/ctudents/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"admin",
+										"ctudents",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"olatunjihammed@gmail.com\",\r\n    \"password\": \"abcde\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login guest",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"olatunjihammed@gmail.com\",\r\n    \"password\": \"abcde\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:3000",
+			"type": "default"
+		}
+	]
+}

@@ -32,7 +32,7 @@ app.use(methodOverride('_method'));
 app.use(express.static(resolve('assets')));
 app.use(express.static(resolve('uploads')));
 app.use(userRoute);
-app.use('/users', apiAdminRoute);
+app.use('/users',  apiAdminRoute);
 // app.use('/admin', checkAuth, adminRoute); // ssr
 
 app.all('/*splat', (req, res) => {
