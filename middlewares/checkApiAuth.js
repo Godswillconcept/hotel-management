@@ -1,9 +1,9 @@
-const {expressjwt: jwt} = require('express-jwt');
-const JWT_SECRET  = process.env?.JWT_SECRET || "what is your name";
+const { expressjwt: jwt } = require('express-jwt');
+const JWT_SECRET = process.env?.JWT_SECRET || "what is your name";
 
 const authenticate = (req, res, next) => {
-    if (!req.auth?.admin){
-        return res.status(401).json({ message: 'Unauthorized' });
+    if (!req.auth?.guest || !req.auth?.user) {
+        return res.status(401).json({ status: "error", message: 'Unauthorized' });
     }
     next();
 }
