@@ -10,6 +10,10 @@ const transporter = nodemailer.createTransport({
         user: process.env.SMTP_USER, // Your email
         pass: process.env.SMTP_PASS || 'vvkibhyxlzhjiuiu ', // Your email password or app password
     },
+    // Add these options to improve deliverability
+    tls: {
+        rejectUnauthorized: false
+    }
 });
 
 const createWelcomeEmailTemplate = (fullName) => {
@@ -24,14 +28,17 @@ const createWelcomeEmailTemplate = (fullName) => {
     <body style="margin: 0; padding: 0; font-family: 'Georgia', serif; background-color: #1a1a2e;">
         <div style="max-width: 600px; margin: 0 auto; background-color: #1a1a2e; padding: 40px 20px;">
             <div style="background-color: #f5f2ed; border-radius: 15px; padding: 40px; text-align: center;">
+            
                 <!-- Logo Section -->
-                <div style="margin-bottom: 30px;">
-                    <div style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; border: 3px solid #b8860b; border-radius: 50%; background-color: #f5f2ed; margin-bottom: 15px;">
-                        <span style="font-size: 36px; color: #b8860b; font-style: italic; font-weight: bold;">L</span>
-                    </div>
-                    <h1 style="margin: 10px 0 5px 0; font-size: 42px; color: #b8860b; letter-spacing: 8px; font-weight: 300;">Lodgix</h1>
-                    <p style="margin: 0; color: #b8860b; font-size: 14px; font-style: italic;">excellent service all the time</p>
-                </div>
+                      <table align="center" width="80" height="80"
+                style="border: 3px solid #b8860b; border-radius: 50%; background-color: #f5f2ed;" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td align="center" valign="middle"
+                        style="font-size: 36px; color: #b8860b; font-style: italic; font-weight: bold; height: 80px;">
+                        L
+                    </td>
+                </tr>
+            </table>
 
                 <!-- Welcome Message -->
                 <div style="margin: 40px 0;">
@@ -162,14 +169,17 @@ const createVerificationSuccessTemplate = (fullName) => {
     <body style="margin: 0; padding: 0; font-family: 'Georgia', serif; background-color: #1a1a2e;">
         <div style="max-width: 600px; margin: 0 auto; background-color: #1a1a2e; padding: 40px 20px;">
             <div style="background-color: #f5f2ed; border-radius: 15px; padding: 40px; text-align: center;">
+             
                 <!-- Logo Section -->
-                <div style="margin-bottom: 30px;">
-                    <div style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; border: 3px solid #b8860b; border-radius: 50%; background-color: #f5f2ed; margin-bottom: 15px;">
-                        <span style="font-size: 36px; color: #b8860b; font-style: italic; font-weight: bold;">L</span>
-                    </div>
-                    <h1 style="margin: 10px 0 5px 0; font-size: 42px; color: #b8860b; letter-spacing: 8px; font-weight: 300;">Lodgix</h1>
-                    <p style="margin: 0; color: #b8860b; font-size: 14px; font-style: italic;">excellent service all the time</p>
-                </div>
+                      <table align="center" width="80" height="80"
+                style="border: 3px solid #b8860b; border-radius: 50%; background-color: #f5f2ed;" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td align="center" valign="middle"
+                        style="font-size: 36px; color: #b8860b; font-style: italic; font-weight: bold; height: 80px;">
+                        L
+                    </td>
+                </tr>
+            </table>
 
                 <!-- Success Message -->
                 <div style="margin: 40px 0;">
@@ -225,11 +235,19 @@ const sendEmail = async (mailOptions) => {
         }
 
         const info = await transporter.sendMail({
-            from: process.env.SMTP_FROM || process.env.SMTP_USER, // sender address
-            to: mailOptions.to.trim(), // list of receivers
-            subject: mailOptions.subject, // Subject line
-            text: mailOptions.text, // plain text body (fallback)
-            html: mailOptions.html, // html body
+            from: `"Lodgix" <${process.env.SMTP_USER}>`, // Better sender format
+            to: mailOptions.to.trim(),
+            subject: mailOptions.subject,
+            text: mailOptions.text,
+            html: mailOptions.html,
+            // Add these headers to improve deliverability
+            headers: {
+                'X-Priority': '1',
+                'X-MSMail-Priority': 'High',
+                'Importance': 'high',
+                'List-Unsubscribe': '<mailto:unsubscribe@lodgix.com>',
+                'X-Mailer': 'Lodgix Hotel Management System'
+            }
         });
 
         console.log('Message sent: %s', info.messageId);
