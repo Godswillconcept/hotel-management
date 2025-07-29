@@ -1,7 +1,7 @@
 const Booking = require("../models/Booking");
 const storeBooking = async (req, res) => {
-  let { booking_id, guest_id, room_id, check_in_date, check_out_date, total_amount, status, payment_status } = req.body;
-  const booking = Booking.fill({ booking_id, guest_id, room_id, check_in_date, check_out_date, total_amount, status, payment_status });
+  let {  guest_id, room_id, check_in_date, check_out_date, total_amount, status, payment_status } = req.body;
+  const booking = Booking.fill({  guest_id, room_id, check_in_date, check_out_date, total_amount, status, payment_status });
   await booking.insert();
   res.json({
     status: "success",
@@ -37,7 +37,7 @@ const getBookingById = async (req, res) => {
 
 const updateBooking = async (req, res) => {
   let { id } = req.params;
-  let { booking_id, guest_id, room_id, check_in_date, check_out_date, total_amount, status, payment_status} = req.body;
+  let { guest_id, room_id, check_in_date, check_out_date, total_amount, status, payment_status} = req.body;
   const booking = await Booking.find(id);
   if (!booking) {
     return res.status(404).json({
@@ -45,7 +45,7 @@ const updateBooking = async (req, res) => {
       message: "Booking not found",
     });
   }
-  booking.fill({ booking_id, guest_id, room_id, check_in_date, check_out_date, total_amount, status, payment_status });
+  booking.fill({ guest_id, room_id, check_in_date, check_out_date, total_amount, status, payment_status });
 
   await booking.update();
 

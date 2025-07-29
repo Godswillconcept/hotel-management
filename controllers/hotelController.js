@@ -1,7 +1,7 @@
 const Hotel = require("../models/Hotel");
 const storeHotel = async (req, res) => {
-  let { hotel_id,name,address,city,country,contact_email,phone_number } = req.body;
-  const hotel = Hotel.fill({ hotel_id,name,address,city,country,contact_email,phone_number });
+  let { name,address,city,country,contact_email,phone_number } = req.body;
+  const hotel = Hotel.fill({ name,address,city,country,contact_email,phone_number });
   await hotel.insert();
   res.json({
     status: "success",

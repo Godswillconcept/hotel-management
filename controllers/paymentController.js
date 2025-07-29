@@ -1,7 +1,7 @@
 const Payment = require("../models/Payment");
 const storePayment = async (req, res) => {
-    let { payment_id, booking_id, payment_date, amount, method, status } = req.body;
-    const payment = Payment.fill({ payment_id, booking_id, payment_date, amount, method, status });
+    let { booking_id, payment_date, amount, method, status } = req.body;
+    const payment = Payment.fill({ booking_id, payment_date, amount, method, status });
     await payment.insert();
     res.json({
         status: "success",
