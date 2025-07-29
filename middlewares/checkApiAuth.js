@@ -1,5 +1,5 @@
 const {expressjwt: jwt} = require('express-jwt');
-const JWT_SECRET  = process.env?.JWT_SECRET || "don't share this secret with anyone";
+const JWT_SECRET  = process.env?.JWT_SECRET || "what is your name";
 
 const authenticate = (req, res, next) => {
     if (!req.auth?.admin){
