@@ -4,7 +4,7 @@ const router = Router();
 
 
 const { storeBooking, getBookings, getBookingById, updateBooking, partialBookingUpdate, deleteBooking } = require("../controllers/bookingController");
-const { storeGuest, getGuests, getGuestById, updateGuest, partialGuestUpdate, deleteGuest} = require("../controllers/guestController");
+const { storeGuest, getGuests, getGuestById, updateGuest, partialGuestUpdate, deleteGuest, verifyGuestEmail} = require("../controllers/guestController");
 const { storeHotel, getHotels, getHotelById, updateHotel, partialHotelUpdate, deleteHotel } = require("../controllers/hotelController");
 const { storePayment, getPayments, getPaymentById, partialPaymentUpdate, deletePayment } = require("../controllers/paymentController");
 const { storeRoom, getRooms, getRoomById, updateRoom, partialRoomUpdate, deleteRoom } = require("../controllers/roomController");
@@ -30,6 +30,7 @@ router.delete("/bookings/:id", deleteBooking);
 // Guests
 router.post("/guests", storeGuest);
 router.get("/guests", getGuests);
+router.post("/guests/verify-email", verifyGuestEmail);
 router.get("/guests/:id", getGuestById);
 router.put("/guests/:id", updateGuest);
 router.patch("/guests/:id", partialGuestUpdate);

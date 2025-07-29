@@ -88,3 +88,30 @@ CREATE TABLE IF NOT EXISTS users (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (hotel_id) REFERENCES hotels(id)
 );
+
+CREATE TABLE IF NOT EXISTS otp_verification (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    guest_email VARCHAR(255) NOT NULL,
+    otp_code VARCHAR(6) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    expires_at TIMESTAMP NOT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS temp_registrations (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(30) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    address TEXT,
+    id_document TEXT,
+    otp_code VARCHAR(6) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    expires_at TIMESTAMP NOT NULL
+);
+
+alter table guests add column otp_verified boolean default false;
+alter table guests add column email_verified boolean default false;
+alter table guests modify column email varchar(255) not null unique;
+alter table users modify column email varchar(255) not null unique;
