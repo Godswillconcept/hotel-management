@@ -132,13 +132,15 @@ const guestLogin = async (req, res) => {
     return res.status(401).json({
       status: "error",
       message: "Invalid email or password",
+
     });
   }
   // Generate a token if needed
+  const token = jwt.sign({ id: guest.id, role:"guest" }, JWT_SECRET, { expiresIn: "7d" });
   res.json({
     status: "success",
     message: "Login successful",
-    // data: { token },
+    data: { token },
   });
 };
 

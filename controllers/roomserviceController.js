@@ -1,13 +1,12 @@
 const Roomservice = require("../models/Roomservice");
 const storeRoomservice = async (req, res) => {
-    let { service_id,
+    let { 
         room_id,
         request_type,
         request_time,
         status,
         email } = req.body;
     const roomservice = Roomservice.fill({
-        service_id,
         room_id,
         request_type,
         request_time,
