@@ -5,7 +5,11 @@ const jwt = require("jsonwebtoken");
 const JWT_SECRET =
   process.env.JWT_SECRET || "what is your name";
 const storeUser = async (req, res) => {
+<<<<<<< HEAD
     let { 
+=======
+    let {
+>>>>>>> f7534af0f481ed30fec2cb8a802c7271124cec86
         hotel_id,
         username,
         password,
@@ -13,7 +17,11 @@ const storeUser = async (req, res) => {
         role,
         email,
         phone_number } = req.body;
+<<<<<<< HEAD
     const user = User.fill({
+=======
+    const user = User.fill({    
+>>>>>>> f7534af0f481ed30fec2cb8a802c7271124cec86
         hotel_id,
         username,
         password,
