@@ -26,8 +26,8 @@ const createWelcomeEmailTemplate = (fullName) => {
             <div style="background-color: #f5f2ed; border-radius: 15px; padding: 40px; text-align: center;">
                 <!-- Logo Section -->
                 <div style="margin-bottom: 30px;">
-                    <div style="display: inline-block; width: 80px; height: 80px; border: 3px solid #b8860b; border-radius: 50%; background-color: #f5f2ed; position: relative; margin-bottom: 15px;">
-                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 36px; color: #b8860b; font-style: italic; font-weight: bold;">L</span>
+                    <div style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; border: 3px solid #b8860b; border-radius: 50%; background-color: #f5f2ed; margin-bottom: 15px;">
+                        <span style="font-size: 36px; color: #b8860b; font-style: italic; font-weight: bold;">L</span>
                     </div>
                     <h1 style="margin: 10px 0 5px 0; font-size: 42px; color: #b8860b; letter-spacing: 8px; font-weight: 300;">Lodgix</h1>
                     <p style="margin: 0; color: #b8860b; font-size: 14px; font-style: italic;">excellent service all the time</p>
@@ -96,8 +96,8 @@ const createOTPEmailTemplate = (fullName, otp) => {
 
                 <!-- Logo Section -->
                 <div style="margin-bottom: 30px;">
-                    <div style="display: inline-block; width: 80px; height: 80px; border: 3px solid #b8860b; border-radius: 50%; background-color: #f5f2ed; position: relative; margin-bottom: 15px;">
-                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 36px; color: #b8860b; font-style: italic; font-weight: bold; justify-content: center; align-items: center; display: flex;">L</span>
+                    <div style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; border: 3px solid #b8860b; border-radius: 50%; background-color: #f5f2ed; margin-bottom: 15px;">
+                        <span style="font-size: 36px; color: #b8860b; font-style: italic; font-weight: bold; text-align: center;">L</span>
                     </div>
                     <h1 style="margin: 10px 0 5px 0; font-size: 42px; color: #b8860b; letter-spacing: 8px; font-weight: 300;">Lodgix</h1>
                     <p style="margin: 0; color: #b8860b; font-size: 14px; font-style: italic;">excellent service all the time</p>
@@ -161,8 +161,8 @@ const createVerificationSuccessTemplate = (fullName) => {
             <div style="background-color: #f5f2ed; border-radius: 15px; padding: 40px; text-align: center;">
                 <!-- Logo Section -->
                 <div style="margin-bottom: 30px;">
-                    <div style="display: inline-block; width: 80px; height: 80px; border: 3px solid #b8860b; border-radius: 50%; background-color: #f5f2ed; position: relative; margin-bottom: 15px;">
-                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 36px; color: #b8860b; font-style: italic; font-weight: bold;">L</span>
+                    <div style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; border: 3px solid #b8860b; border-radius: 50%; background-color: #f5f2ed; margin-bottom: 15px;">
+                        <span style="font-size: 36px; color: #b8860b; font-style: italic; font-weight: bold;">L</span>
                     </div>
                     <h1 style="margin: 10px 0 5px 0; font-size: 42px; color: #b8860b; letter-spacing: 8px; font-weight: 300;">Lodgix</h1>
                     <p style="margin: 0; color: #b8860b; font-size: 14px; font-style: italic;">excellent service all the time</p>
