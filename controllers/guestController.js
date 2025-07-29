@@ -135,18 +135,19 @@ const guestLogin = async (req, res) => {
 
     });
   }
-  // Generate a token if needed
-<<<<<<< HEAD
-  const token = jwt.sign({ id: guest.id, role:"guest" }, JWT_SECRET, { expiresIn: "7d" });
-=======
-  const token = jwt.sign({ id: guest.id, role: "guest" }, JWT_SECRET, {
-    expiresIn: "7d", // Token valid for 7 days
-  });
->>>>>>> f7534af0f481ed30fec2cb8a802c7271124cec86
+  // Generate a token with guest object
+  const token = jwt.sign({ 
+      guest: { 
+          id: guest.guest_id, 
+          email: guest.email,
+          role: "guest" 
+      } 
+  }, JWT_SECRET, { expiresIn: "7d" });
+  
   res.json({
-    status: "success",
-    message: "Login successful",
-    data: { token },
+      status: "success",
+      message: "Login successful",
+      data: { token },
   });
 };
 
