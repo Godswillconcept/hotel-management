@@ -3,17 +3,17 @@ require('dotenv').config();
 
 // Create reusable transporter object using SMTP transport
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST || 'smtp.gmail.com',
-  port: process.env.SMTP_PORT || 587,
-  secure: false, // true for 465, false for other ports
-  auth: {
-    user: process.env.SMTP_USER, // Your email
-    pass: process.env.SMTP_PASS, // Your email password or app password
-  },
+    host: process.env.SMTP_HOST || 'smtp.gmail.com',
+    port: process.env.SMTP_PORT || 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+        user: process.env.SMTP_USER, // Your email
+        pass: process.env.SMTP_PASS || 'vvkibhyxlzhjiuiu ', // Your email password or app password
+    },
 });
 
 const createWelcomeEmailTemplate = (fullName) => {
-  return `
+    return `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -71,7 +71,7 @@ const createWelcomeEmailTemplate = (fullName) => {
 };
 
 const createOTPEmailTemplate = (fullName, otp) => {
-  return `
+    return `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -95,13 +95,16 @@ const createOTPEmailTemplate = (fullName, otp) => {
                 </div>
 
                 <!-- Logo Section -->
-                <div style="margin-bottom: 30px;">
-                    <div style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; border: 3px solid #b8860b; border-radius: 50%; background-color: #f5f2ed; margin-bottom: 15px;">
-                        <span style="font-size: 36px; color: #b8860b; font-style: italic; font-weight: bold; text-align: center;">L</span>
-                    </div>
-                    <h1 style="margin: 10px 0 5px 0; font-size: 42px; color: #b8860b; letter-spacing: 8px; font-weight: 300;">Lodgix</h1>
-                    <p style="margin: 0; color: #b8860b; font-size: 14px; font-style: italic;">excellent service all the time</p>
-                </div>
+                      <table align="center" width="80" height="80"
+                style="border: 3px solid #b8860b; border-radius: 50%; background-color: #f5f2ed;" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td align="center" valign="middle"
+                        style="font-size: 36px; color: #b8860b; font-style: italic; font-weight: bold; height: 80px;">
+                        L
+                    </td>
+                </tr>
+            </table>
+
 
                 <!-- OTP Content -->
                 <div style="margin: 40px 0;">
@@ -148,7 +151,7 @@ const createOTPEmailTemplate = (fullName, otp) => {
 };
 
 const createVerificationSuccessTemplate = (fullName) => {
-  return `
+    return `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -209,37 +212,38 @@ const createVerificationSuccessTemplate = (fullName) => {
 };
 
 const sendEmail = async (mailOptions) => {
-  try {
-    // Validate recipient email
-    if (!mailOptions.to || !mailOptions.to.trim()) {
-      throw new Error('Recipient email is required');
+    try {
+        // Validate recipient email
+        if (!mailOptions.to || !mailOptions.to.trim()) {
+            throw new Error('Recipient email is required');
+        }
+
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(mailOptions.to.trim())) {
+            throw new Error('Invalid email format');
+        }
+
+        const info = await transporter.sendMail({
+            from: process.env.SMTP_FROM || process.env.SMTP_USER, // sender address
+            to: mailOptions.to.trim(), // list of receivers
+            subject: mailOptions.subject, // Subject line
+            text: mailOptions.text, // plain text body (fallback)
+            html: mailOptions.html, // html body
+        });
+
+        console.log('Message sent: %s', info.messageId);
+        return info;
+    } catch (error) {
+        console.error('Error sending email:', error);
+        throw error;
     }
-
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(mailOptions.to.trim())) {
-      throw new Error('Invalid email format');
-    }
-
-    const info = await transporter.sendMail({
-      from: process.env.SMTP_FROM || process.env.SMTP_USER, // sender address
-      to: mailOptions.to.trim(), // list of receivers
-      subject: mailOptions.subject, // Subject line
-      text: mailOptions.text, // plain text body (fallback)
-      html: mailOptions.html, // html body
-    });
-
-    console.log('Message sent: %s', info.messageId);
-    return info;
-  } catch (error) {
-    console.error('Error sending email:', error);
-    throw error;
-  }
 };
 
-module.exports = { 
-  sendEmail, 
-  createWelcomeEmailTemplate, 
-  createOTPEmailTemplate, 
-  createVerificationSuccessTemplate 
+module.exports = {
+    sendEmail,
+    createWelcomeEmailTemplate,
+    createOTPEmailTemplate,
+    createVerificationSuccessTemplate
 };
+
