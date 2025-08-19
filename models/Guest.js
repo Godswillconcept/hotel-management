@@ -1,6 +1,7 @@
 const Model = require('./Model');
 
 class Guest extends Model {
+    static tableName = 'guests';
 
     static async findByEmail(email) {
         const sql = "SELECT * FROM guests WHERE email = ?";
@@ -13,11 +14,14 @@ class Guest extends Model {
 
     // Save temporary registration with OTP
     static async saveTempRegistration(guestData, otp) {
+        console.log('Saving temp registration:', guestData);
         const sql = `INSERT INTO temp_registrations 
                      (full_name, password, phone_number, email, address, id_document, otp_code, expires_at) 
                      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
-        const expiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes
-        await this.query(sql, [
+        
+        const expiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes from now
+        
+        const params = [
             guestData.full_name,
             guestData.password,
             guestData.phone_number,
@@ -26,7 +30,14 @@ class Guest extends Model {
             guestData.id_document,
             otp,
             expiresAt
-        ]);
+        ];
+        
+        console.log('SQL:', sql);
+        console.log('Params:', params);
+        
+        const result = await this.query(sql, params);
+        console.log('Insert result:', result);
+        return result;
     }
 
     // Find temp registration by email and OTP

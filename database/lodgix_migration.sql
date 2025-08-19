@@ -115,3 +115,5 @@ alter table guests add column otp_verified boolean default false;
 alter table guests add column email_verified boolean default false;
 alter table guests modify column email varchar(255) not null unique;
 alter table users modify column email varchar(255) not null unique;
+alter table hotels add column hotel_image varchar(255);
+alter table hotels add column extra_image varchar(255);
