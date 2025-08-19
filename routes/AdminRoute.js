@@ -2,22 +2,17 @@ const { Router } = require("express");
 const { resolve } = require("path");
 const router = Router();
 
-
 const { storeBooking, getBookings, getBookingById, updateBooking, partialBookingUpdate, deleteBooking } = require("../controllers/bookingController");
-const { storeGuest, getGuests, getGuestById, updateGuest, partialGuestUpdate, deleteGuest, verifyGuestEmail} = require("../controllers/guestController");
+const { getGuests, getGuestById, updateGuest, partialGuestUpdate, deleteGuest } = require("../controllers/guestController"); // Remove storeGuest, verifyGuestEmail
 const { storeHotel, getHotels, getHotelById, updateHotel, partialHotelUpdate, deleteHotel } = require("../controllers/hotelController");
 const { storePayment, getPayments, getPaymentById, partialPaymentUpdate, deletePayment } = require("../controllers/paymentController");
 const { storeRoom, getRooms, getRoomById, updateRoom, partialRoomUpdate, deleteRoom } = require("../controllers/roomController");
 const { storeRoomservice, getRoomservices, getRoomserviceById, updateRoomservice, partialRoomserviceUpdate, deleteRoomservice } = require("../controllers/roomserviceController");
 const { storeUser, getUsers, getUserById, updateUser, partialUserUpdate, deleteUser} = require("../controllers/userController");
 
-
-
-
 router.get("/", (req, res) => {
     res.sendFile(resolve("views", "guest", "dashboard.html"));
 });
-
 
 // Bookings
 router.post("/bookings", storeBooking);
@@ -27,10 +22,8 @@ router.put("/bookings/:id", updateBooking);
 router.patch("/bookings/:id", partialBookingUpdate);
 router.delete("/bookings/:id", deleteBooking);
 
-// Guests
-router.post("/guests", storeGuest);
+// Guests (Admin management only - no registration)
 router.get("/guests", getGuests);
-router.post("/guests/verify-email", verifyGuestEmail);
 router.get("/guests/:id", getGuestById);
 router.put("/guests/:id", updateGuest);
 router.patch("/guests/:id", partialGuestUpdate);
@@ -74,6 +67,5 @@ router.get("/users/:id", getUserById);
 router.put("/users/:id", updateUser);
 router.patch("/users/:id", partialUserUpdate);
 router.delete("/users/:id", deleteUser);
-
 
 module.exports = router;
