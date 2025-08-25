@@ -117,3 +117,15 @@ alter table guests modify column email varchar(255) not null unique;
 alter table users modify column email varchar(255) not null unique;
 alter table hotels add column hotel_image varchar(255);
 alter table hotels add column extra_image varchar(255);
+    alter table hotels add column price_per_night float;
+
+create table if not exists bookmarks (
+    id int unsigned auto_increment primary key,
+    hotel_id int unsigned not null,
+    guest_id int unsigned not null,
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp on update current_timestamp,
+    foreign key (guest_id) references guests(id),
+    foreign key (hotel_id) references hotels(id),
+    unique key unique_bookmark (guest_id, hotel_id)
+);
