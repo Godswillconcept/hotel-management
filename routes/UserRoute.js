@@ -1,9 +1,9 @@
 const { Router } = require("express");
 const router = Router();
 const { apiLogin } = require("../controllers/userController");
-const { guestLogin, storeGuest, verifyGuestEmail, resendOtp } = require("../controllers/guestController");
+const { guestLogin, storeGuest, verifyGuestEmail, resendOtp, partialGuestUpdate } = require("../controllers/guestController");
 const { storeBooking,getGuestBookings } = require("../controllers/bookingController");
-const { storePayment } = require("../controllers/paymentController");
+const { storePayment, getGuestPayments } = require("../controllers/paymentController");
 const {
   storeRoom,
   getRooms,
@@ -35,8 +35,9 @@ router.post("/guests", storeGuest); // Register guest (saves to temp_registratio
 router.post("/guests/verify-email", verifyGuestEmail); // Verify OTP and create actual guest
 router.post("/guests/resend-otp", resendOtp); // Resend OTP
 router.post('/bookings', storeBooking);
-router.get('/bookings/guest/:id', getGuestBookings);
+router.get('/bookings/guest/:guestId', getGuestBookings);
 router.post("/payments", storePayment);
+router.get('/payments/guest/:guestId', getGuestPayments);
 
 // Bookmark routes
 router.post("/bookmarks", storeBookmark);
@@ -66,5 +67,6 @@ router.put('/rooms/:id', updateRoom);
 router.patch('/rooms/:id', partialRoomUpdate);
 router.delete('/rooms/:id', deleteRoom);
 router.get('/hotel/:id', getHotelRooms);
+router.patch('/guests/:id', partialGuestUpdate);
 
 module.exports = router;

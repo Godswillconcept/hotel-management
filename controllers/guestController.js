@@ -340,22 +340,35 @@ const updateGuest = async (req, res) => {
 
 const partialGuestUpdate = async (req, res) => {
   let { id } = req.params;
-  const guest = await Guest.find(id);
-  if (!guest) {
-    return res.status(404).json({
+  
+  try {
+    console.log(`Updating guest ${id} with data:`, req.body);
+    
+    const guest = await Guest.find(id);
+    if (!guest) {
+      return res.status(404).json({
+        status: "error",
+        message: "Guest not found",
+      });
+    }
+    
+    guest.fill(req.body);
+    await guest.update();
+
+    console.log('Guest updated successfully:', guest);
+
+    res.json({
+      status: "success",
+      message: "Guest updated successfully",
+      data: guest,
+    });
+  } catch (error) {
+    console.error('Error updating guest:', error);
+    res.status(500).json({
       status: "error",
-      message: "Guest not found",
+      message: "Failed to update guest: " + error.message,
     });
   }
-  guest.fill(req.body);
-
-  await guest.update();
-
-  res.json({
-    status: "success",
-    message: "Guest updated successfully",
-    data: guest,
-  });
 };
 
 const deleteGuest = async (req, res) => {
@@ -429,24 +442,29 @@ const guestLogin = async (req, res) => {
       { expiresIn: "7d" }
     );
 
+    
     console.log('Token generated successfully');
+      const guestData = {
+      id: guest.id,
+      full_name: guest.full_name,
+      email: guest.email,
+      phone_number: guest.phone_number,
+      address: guest.address,
+      id_document: guest.id_document,
+      email_verified: guest.email_verified,
+      otp_verified: guest.otp_verified,
+      created_at: guest.created_at,
+      updated_at: guest.updated_at
+    };
 
     // Return guest data along with token
     res.json({
       status: "success",
       message: "Login successful",
-      data: { 
-        token,
-        guest: {
-          id: guest.id,
-          email: guest.email,
-          full_name: guest.full_name,
-          phone_number: guest.phone_number,
-          address: guest.address,
-          created_at: guest.created_at,
-          email_verified: guest.email_verified,
-          otp_verified: guest.otp_verified
-        }
+    data: {
+        token: token,
+        guest: guestData,
+        user: guestData, // Also send as 'user' for compatibility
       },
     });
   } catch (error) {

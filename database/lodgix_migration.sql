@@ -75,19 +75,19 @@ CREATE TABLE IF NOT EXISTS room_services (
     FOREIGN KEY (room_id) REFERENCES rooms(id)
 );
 
-CREATE TABLE IF NOT EXISTS users (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    hotel_id INT UNSIGNED,
-    username VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    full_name VARCHAR(255) NOT NULL,
-    role ENUM('Admin', 'Staff') DEFAULT 'Staff',
-    email VARCHAR(255) NOT NULL,
-    phone_number VARCHAR(30) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (hotel_id) REFERENCES hotels(id)
-);
+    CREATE TABLE IF NOT EXISTS users (
+        id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        hotel_id INT UNSIGNED,
+        username VARCHAR(255) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL,
+        full_name VARCHAR(255) NOT NULL,
+        role ENUM('Admin', 'Staff') DEFAULT 'Staff',
+        email VARCHAR(255) NOT NULL,
+        phone_number VARCHAR(30) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        FOREIGN KEY (hotel_id) REFERENCES hotels(id)
+    );
 
 CREATE TABLE IF NOT EXISTS otp_verification (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
